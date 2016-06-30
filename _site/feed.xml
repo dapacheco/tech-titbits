@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tech titbits</title>
+    <description>Random bits and bytes that make up tech titbits that I find interesting.</description>
+    <link>http://davepacheco.com/tech</link>
+    <atom:link href="http://davepacheco.com/tech/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Live Templates in Android Studio</title>
+        <description>
+          
+          Live templates allow you to quickly add text to the current file. They are context aware so that only relevant templates for the current cursor location are shown. You can insert the template into your file by writing the templates name, or by pressing ⌘+j to bring up the live...
+        </description>
+        <pubDate>Thu, 30 Jun 2016 12:16:14 +0100</pubDate>
+        <link>http://davepacheco.com/tech/2016-06-30-live-templates/</link>
+        <guid isPermaLink="true">http://davepacheco.com/tech/2016-06-30-live-templates/</guid>
+      </item>
+    
+  </channel>
+</rss>

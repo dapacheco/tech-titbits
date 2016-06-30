@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2016 -->
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Live Templates in Android Studio</title>
+
+  <meta name="author" content="David Pacheco" />
+  
+  
+
+  <link rel="alternate" type="application/rss+xml" title="Tech titbits - Random bits and bytes that make up tech titbits that I find interesting." href="/tech/feed.xml" />
+
+  
+    
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    
+      
+  
+  
+    
+      <link rel="stylesheet" href="/tech/css/bootstrap.min.css" />
+    
+      <link rel="stylesheet" href="/tech/css/main.css" />
+    
+    
+  
+  
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+    
+  
+
+    
+  
+  
+
+  
+
+  <!-- Facebook OpenGraph tags -->
+  <meta property="og:title" content="Live Templates in Android Studio" />
+  <meta property="og:type" content="website" />
+  
+  
+  <meta property="og:url" content="http://davepacheco.com/tech/2016-06-30-live-templates//" />
+  
+  
+  
+  <meta property="og:image" content="" />
+  
+  
+</head>
+
+
+  <body>
+  
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://davepacheco.com/tech">Tech titbits</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+          <li>
+            
+            
+
+
+
+
+
+<a href="/tech/aboutme">About Me</a>
+
+          </li>
+        
+        
+      </ul>
+    </div>
+
+	
+
+  </div>
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <h1>Live Templates in Android Studio</h1>
+		  
+		  
+		  
+		  <span class="post-meta">Posted on June 30, 2016</span>
+		  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+	      <p>Live templates allow you to quickly add text to the current file. They are context
+aware so that only relevant templates for the current cursor location are shown.</p>
+
+<p>You can insert the template into your file by writing the templates name, or by pressing
+⌘+j to bring up the live template context menu, the you can search for the template by name.</p>
+
+<p><img src="/tech/img/template_example.gif" alt="live templates example" /></p>
+
+<h2 id="how-to-add">How to add?</h2>
+
+<ul>
+  <li>Copy the template from below</li>
+  <li>Go to preferences (⌘+,) &gt; Editor &gt; Live Templates.</li>
+  <li>Select the <code class="highlighter-rouge">Kotlin</code> section.</li>
+  <li>Paste</li>
+  <li>:moneybag:</li>
+</ul>
+
+<h2 id="result-block-for-service-call">Result block for service call</h2>
+
+<p>Use this within the completion block on a service call that takes a Result.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;template</span> <span class="na">name=</span><span class="s">"serresult"</span> <span class="na">value=</span><span class="s">"result -&amp;gt;&amp;#10;&amp;#10;result.success?.let {&amp;#10;&amp;#10;}&amp;#10;&amp;#10;result.failure?.let {&amp;#10;&amp;#10;}"</span> <span class="na">description=</span><span class="s">"service results block"</span> <span class="na">toReformat=</span><span class="s">"true"</span> <span class="na">toShortenFQNames=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;context&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">"KOTLIN_EXPRESSION"</span> <span class="na">value=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/context&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+</code></pre>
+</div>
+
+<h3 id="example-output">Example output</h3>
+<pre><code class="language-kotlin">result -&gt;
+  result.success?.let {
+  }
+
+  result.failure?.let {
+  }
+</code></pre>
+
+<h2 id="mock-var-for-unit-test">Mock var for unit test</h2>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;template</span> <span class="na">name=</span><span class="s">"mock"</span> <span class="na">value=</span><span class="s">"@Mock&amp;#10;lateinit var $NAME$: $TYPE$"</span> <span class="na">description=</span><span class="s">"Mock var"</span> <span class="na">toReformat=</span><span class="s">"false"</span> <span class="na">toShortenFQNames=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;variable</span> <span class="na">name=</span><span class="s">"NAME"</span> <span class="na">expression=</span><span class="s">""</span> <span class="na">defaultValue=</span><span class="s">""</span> <span class="na">alwaysStopAt=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;variable</span> <span class="na">name=</span><span class="s">"TYPE"</span> <span class="na">expression=</span><span class="s">""</span> <span class="na">defaultValue=</span><span class="s">""</span> <span class="na">alwaysStopAt=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;context&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">"KOTLIN_CLASS"</span> <span class="na">value=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/context&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+</code></pre>
+</div>
+
+<h3 id="example-output-1">Example output</h3>
+<pre><code class="language-kotlin">@Mock
+lateinit var &lt;name&gt;: &lt;type&gt;
+</code></pre>
+
+<p>Where <code class="highlighter-rouge">&lt;name&gt;</code> and <code class="highlighter-rouge">&lt;type&gt;</code> are replaced on template insertion</p>
+
+<h2 id="run-with-mock-annotation">Run with mock annotation</h2>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;template</span> <span class="na">name=</span><span class="s">"runwithmock"</span> <span class="na">value=</span><span class="s">"@RunWith(MockitoJUnitRunner::class)"</span> <span class="na">description=</span><span class="s">"Run With Mock annotation"</span> <span class="na">toReformat=</span><span class="s">"false"</span> <span class="na">toShortenFQNames=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;context&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">"KOTLIN_TOPLEVEL"</span> <span class="na">value=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/context&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+</code></pre>
+</div>
+
+<h3 id="example">Example</h3>
+<p>Adds <code class="highlighter-rouge">@RunWith(MockitoJUnitRunner::class)</code> to a class</p>
+
+<h2 id="test-function">Test function</h2>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;template</span> <span class="na">name=</span><span class="s">"testfun"</span> <span class="na">value=</span><span class="s">"@Test&amp;#10;fun test_$NAME$() {&amp;#10;    // Given&amp;#10;    $END$&amp;#10;    &amp;#10;    // When&amp;#10;    &amp;#10;    &amp;#10;    // Then&amp;#10;    &amp;#10;}&amp;#10;"</span> <span class="na">description=</span><span class="s">"Test function"</span> <span class="na">toReformat=</span><span class="s">"true"</span> <span class="na">toShortenFQNames=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;variable</span> <span class="na">name=</span><span class="s">"NAME"</span> <span class="na">expression=</span><span class="s">""</span> <span class="na">defaultValue=</span><span class="s">""</span> <span class="na">alwaysStopAt=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;context&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">"KOTLIN_CLASS"</span> <span class="na">value=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/context&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+</code></pre>
+</div>
+
+<h3 id="example-1">Example</h3>
+<pre><code class="language-kotlin">@Test
+fun test_&lt;name&gt;() {
+  // Given
+  &lt;end&gt;
+  // When
+
+  // Then
+}
+</code></pre>
+
+<p>Where <code class="highlighter-rouge">&lt;name&gt;</code> is replaced on template insertion, and <code class="highlighter-rouge">&lt;end&gt;</code> is where the cursor will be placed once
+the name has been set (press enter after entering the name).</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="s2">"Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
+<span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
+<span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></figure>
+
+
+	    </article>
+	  	  
+      <ul class="pager blog-pager">
+        
+        
+      </ul>
+      
+	    
+        <div class="disqus-comments">
+	        
+
+        </div>
+	    
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+          <li>
+            <a href="https://github.com/dapacheco" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		  
+          <li>
+            <a href="https://twitter.com/dapacheco" title="Twitter">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		  
+          <li>
+            <a href="mailto:dave@davepacheco.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+		  
+		  
+		  		  
+        </ul>
+        <p class="copyright text-muted">
+		  David Pacheco
+		  &nbsp;&bull;&nbsp;
+		  2016
+		  
+		  
+		  &nbsp;&bull;&nbsp;
+		  <a href="http://davepacheco.com/tech">DavePacheco.com</a>
+		  
+	    </p>
+	        <!-- Please don't remove this, keep my open source work credited :) -->
+		<p class="theme-by text-muted">
+		  Theme by
+		  <a href="http://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+		</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+    
+
+
+
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script>
+      	if (typeof jQuery == 'undefined') {
+      	  document.write('<script src="/tech/js/jquery-1.11.2.min.js"></scr' + 'ipt>');
+      	}
+      </script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+	<script src="/tech/js/bootstrap.min.js"></script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+	<script src="/tech/js/main.js"></script>
+    
+  
+
+
+
+
+  
+  </body>
+</html>
