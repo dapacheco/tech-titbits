@@ -98,11 +98,3 @@ fun test_<name>() {
 
 Where `<name>` is replaced on template insertion, and `<end>` is where the cursor will be placed once
 the name has been set (press enter after entering the name).
-
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
